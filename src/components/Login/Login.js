@@ -27,7 +27,7 @@ export const Login = ({ saveToken }) => {
     return (
         <div className='login__wrapper'>
             <div className='login__title'>
-                {'Hey,'}
+                <b>{'Hey,'}</b>
                 <br />
                 {'come on in'}
             </div>
