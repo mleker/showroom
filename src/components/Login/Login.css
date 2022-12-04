@@ -1,0 +1,93 @@
+.login__wrapper {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-weight: 400;
+    height: 100%;
+}
+
+.login__title {
+    font-size: 100px;
+    flex-grow: 1;
+    padding: 40px;
+}
+
+.login-form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.login-form__label {
+    flex-grow: 1;
+}
+
+.login-form__input {
+    width: 100%;
+    font-size: 30px;
+    border: 0;
+    box-shadow: 0 6px 0 -1px #000;
+    height: 60px;
+    background-color: transparent;
+    color: black;
+    outline: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: 0.2s background-color ease-in-out, 0.3s box-shadow ease-in-out, 0.1s padding ease-in-out;
+}
+
+.login-form__errored-input {
+    box-shadow: 0 6px 0 -1px red;
+    color: red;
+}
+
+::placeholder {
+    color: black;
+    opacity: 1;
+}
+:-ms-input-placeholder {
+    color: black;
+}
+::-ms-input-placeholder {
+    color: black;
+}
+
+.login-form__submit-button-wrapper {
+    align-self: flex-end;
+    width: 45%;
+    margin: 40px 0 0 40px;
+    display: flex;
+}
+
+.login-form__error {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: red;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .login__title {
+        font-size: 60px;
+    }
+
+    .login-form__input {
+        font-size: 25px;
+    }
+}
