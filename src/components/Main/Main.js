@@ -1,26 +1,24 @@
 import { useState, useEffect } from 'react';
 import './Main.css';
-import api from '../../api/api';
+import { logout, useTokenDispatch } from '../../context';
 import { Button } from '../Button/Button';
 
-export const Main = ({ removeToken }) => {
+export const Main = () => {
     const [isLoggingOut, setIsLoggingOut] = useState(false);
+    const dispatch = useTokenDispatch();
 
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
 
         if (isLoggingOut) {
-            api.postLogout(signal)
-                .then(() => {
-                    setIsLoggingOut(false);
-                    removeToken();
-                })
+            logout(dispatch, signal)
+                .then(() => setIsLoggingOut(false))
                 .catch((e) => console.log(e));
         }
 
         return () => controller.abort();
-    }, [isLoggingOut])
+    }, [])
 
     const handleClick = async () => {
         setIsLoggingOut(true);
@@ -28,10 +26,22 @@ export const Main = ({ removeToken }) => {
 
     return (
         <div className='main__wrapper'>
-            <div className='main__title'>
-                <b>{'Nastya Mleko'}</b>
-                <br />
-                {'frontend developer'}
+            <div className='main__header'>
+                <div className='main__header-title'>
+                    <b>{'I am Nastya Mleko '}</b>
+                </div>
+                <div className='main__header-subtitle'>
+                    {'and I\'m doing '}
+                    <b>{'frontend'}</b>
+                    {', checkout my '}
+                    <a
+                        className='main__header-link'
+                        href={'/nastya-mleko-frontend-cv.pdf'}
+                        download
+                    >
+                        {'cv'}
+                    </a>
+                </div>
             </div>
             <div className='main__button-wrapper'>
                 <Button

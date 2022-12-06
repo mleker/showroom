@@ -1,72 +1,66 @@
 import './Login.css';
 import { useForm } from './useForm';
 import classNames from 'classnames';
-import { validate } from './validate';
-import api from '../../api/api';
 import { Button } from '../Button/Button';
 
 //TODO Testing
-export const Login = ({ saveToken }) => {
+export const Login = () => {
     const {
         formData,
         errors,
-        isSubmiting,
+        isLoading,
         handleChange,
         handleSubmit,
-    } = useForm(login, validate);
-
-    function login(formData, signal) {
-        return api.getToken({
-            mail: formData.mail,
-            password: formData.password
-        }, signal)
-            .then(saveToken)
-            .catch((e) => console.log(e))
-    };
+    } = useForm();
 
     return (
         <div className='login__wrapper'>
-            <div className='login__title'>
-                <b>{'Hey,'}</b>
-                <br />
-                {'come on in'}
+            <div className='login__header'>
+                <div className='login__header-title'>
+                    <b>{'Hey, come on in'}</b>
+                </div>
+                <div className='login__header-subtitle'>
+                    {'just type in '}
+                    <b>{'random'}</b>
+                    {' credentials'}
+                </div>
             </div>
             <form
-                className='login-form'
+                className='login__form'
                 onSubmit={handleSubmit}
             >
-                <label className='login-form__label'>
+                <label className='login__form-label'>
                     <input
-                        className={classNames(errors.mail && 'login-form__errored-input', 'login-form__input')}
+                        className={classNames(errors.mail && 'login__form-errored-input', 'login__form-input')}
                         placeholder='user@mail.com'
                         name='mail'
                         type='text'
                         aria-label='Email field'
-                        disabled={isSubmiting}
+                        disabled={isLoading}
                         value={formData?.mail || ''}
                         onChange={handleChange}
                     />
                 </label>
-                <label className='login-form__label'>
+                <label className='login__form-label'>
                     <input
-                        className={classNames(errors.password && 'login-form__errored-input', 'login-form__input')}
+                        className={classNames(errors.password && 'login__form-errored-input', 'login__form-input')}
                         placeholder='password'
                         name='password'
                         type='password'
                         aria-label='password field'
-                        disabled={isSubmiting}
+                        disabled={isLoading}
                         value={formData?.password || ''}
                         onChange={handleChange}
                     />
                 </label>
                 <div className='login-form__submit-button-wrapper'>
                     {!!Object.keys(errors).length &&
-                        <div className='login-form__error'>
+                        <div className='login__form-error'>
                             {Object.values(errors).map((msg) => <p key={msg}>{msg}</p>)}
                         </div>
                     }
                     <Button
-                        isLoading={isSubmiting}
+                        isLoading={isLoading}
                         type='submit'
                     >
                         {'Log in'}

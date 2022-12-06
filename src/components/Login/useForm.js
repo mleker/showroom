@@ -1,4 +1,6 @@
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useReducer, useEffect } from 'react';
+import { login, useTokenState, useTokenDispatch } from '../../context';
+import { validate } from './validate';
 
 const formReducer = (state, event) => {
     if (event.reset) {
@@ -14,40 +16,38 @@ const formReducer = (state, event) => {
     })
 }
 
-export const useForm = (callback, validate) => {
+export const useForm = () => {
     const [formData, setFormData] = useReducer(formReducer, {});
     const [errors, setErrors] = useState({});
-    const [isSubmiting, setIsSubmiting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState();
+    const { isLoading } = useTokenState();
+    const dispatch = useTokenDispatch();
 
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
 
-        if (Object.keys(errors).length === 0 && isSubmiting) {
-            callback(formData, signal)
-                .then(
-                    () => {
-                        setFormData({ reset: true });
-                        setIsSubmiting(false);
-                    },
-                    (error) => {
-                        setIsSubmiting(false);
-                    }
-                );
+        if (Object.keys(errors).length === 0 && isSubmitted) {
+            const payload = { name: formData, email: formData.password }
+            login(dispatch, payload, signal)
+                .then(() => {
+                    setFormData({ reset: true });
+                    setIsSubmitted(false);
+                })
+                .catch((error) => console.log(error));
         } else {
-            setIsSubmiting(false);
+            setIsSubmitted(false);
         }
 
         return () => controller.abort();
-    }, [errors])
+    }, [errors, isSubmitted])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors(validate(formData));
-        setIsSubmiting(true);
+        setIsSubmitted(true);
     }
 
-    //   event.persist();
     const handleChange = (e) => setFormData({
         name: e.target.name,
         value: e.target.value,
@@ -56,7 +56,7 @@ export const useForm = (callback, validate) => {
     return {
         formData,
         errors,
-        isSubmiting,
+        isLoading,
         handleChange,
         handleSubmit,
     }

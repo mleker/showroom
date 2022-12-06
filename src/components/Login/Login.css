@@ -1,70 +1,80 @@
 .login__wrapper {
     display: flex;
     flex-direction: column;
+    height: 100%;
     font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
     font-weight: 400;
-    height: 100%;
 }
 
-.login__title {
-    font-size: 100px;
+.login__header {
     flex-grow: 1;
     padding: 40px;
 }
 
-.login-form {
+.login__header-title {
+    font-size: 100px;
+}
+
+.login__header-subtitle {
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+.login__form {
     flex-grow: 1;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
+    display: flex;
     padding: 40px;
 }
 
-.login-form__label {
+.login__form-label {
     flex-grow: 1;
 }
 
-.login-form__input {
+.login__form-input {
     width: 100%;
-    font-size: 30px;
-    border: 0;
     box-shadow: 0 6px 0 -1px #000;
-    height: 60px;
-    background-color: transparent;
-    color: black;
     outline: 0;
-    -webkit-appearance: none;
-    appearance: none;
+    border: 0;
+    height: 60px;
     transition: 0.2s background-color ease-in-out, 0.3s box-shadow ease-in-out, 0.1s padding ease-in-out;
+    background-color: transparent;
+    -webkit-appearance: none;
+    font-size: 30px;
+    color: black;
+    appearance: none;
 }
 
-.login-form__errored-input {
+.login__form-errored-input {
     box-shadow: 0 6px 0 -1px red;
     color: red;
 }
 
 ::placeholder {
-    color: black;
     opacity: 1;
+    color: black;
 }
+
 :-ms-input-placeholder {
     color: black;
 }
+
 ::-ms-input-placeholder {
     color: black;
 }
 
-.login-form__submit-button-wrapper {
-    align-self: flex-end;
-    width: 45%;
-    margin: 40px 0 0 40px;
+.login__form-submit-button-wrapper {
     display: flex;
+    align-self: flex-end;
+    margin: 40px 0 0 40px;
+    width: 45%;
 }
 
-.login-form__error {
+.login__form-error {
     position: absolute;
-    bottom: 40px;
     left: 40px;
+    bottom: 40px;
     color: red;
 }
 
@@ -83,11 +93,15 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .login__title {
-        font-size: 60px;
+    .login__header-title {
+        font-size: 80px;
     }
 
-    .login-form__input {
+    .login__header-subtitle {
+        font-size: 25px;
+    }
+
+    .login__form-input {
         font-size: 25px;
     }
 }

@@ -1,10 +1,4 @@
-const postLogout = (signal) => cancelablePromise(() => { }, signal);
-
-const getToken = (credentials, signal) => {
-    return cancelablePromise(() => ({ token: 'token' }), signal);
-}
-
-const cancelablePromise = (cb, signal) => {
+export const cancelablePromise = (cb, signal) => {
     return new Promise((res, rej) => {
         const listener = () => {
             clearTimeout(timeoutId);
@@ -19,5 +13,3 @@ const cancelablePromise = (cb, signal) => {
         signal?.addEventListener('abort', listener);
     });
 }
-
-export default {getToken, postLogout, cancelablePromise};

@@ -1,18 +1,9 @@
-import api from "./api";
-
-describe('getToken', () => {
-    it('getToken returns token object', () => {
-        expect.assertions(1);
-        return api.getToken().then((data) => {
-            expect(data).toMatchObject({ token: expect.any(String) });
-        });
-    })
-})
+import { cancelablePromise } from './cancelablePromise';
 
 describe('cancelablePromise', () => {
     it('should be fulfilled', () => {
         expect.assertions(1);
-        return api.cancelablePromise(() => 'foo').then((data) => {
+        return cancelablePromise(() => 'foo').then((data) => {
             expect(data).toEqual('foo');
         });
     });
@@ -23,7 +14,7 @@ describe('cancelablePromise', () => {
         const errorObj = new Error('Aborted');
 
         expect.assertions(1);
-        expect(api.cancelablePromise(() => { }, signal)).rejects.toEqual(errorObj);
+        expect(cancelablePromise(() => { }, signal)).rejects.toEqual(errorObj);
         controller.abort();
         done();
     });
@@ -34,7 +25,7 @@ describe('cancelablePromise', () => {
 
         expect.assertions(1);
         const mockCallback = jest.fn();
-        api.cancelablePromise(mockCallback, signal).catch(e => {
+        cancelablePromise(mockCallback, signal).catch(e => {
             expect(mockCallback).toBeCalledTimes(0);
         });
         controller.abort();

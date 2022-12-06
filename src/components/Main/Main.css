@@ -1,25 +1,42 @@
 .main__wrapper {
     display: flex;
     flex-direction: column;
-    font-weight: 400;
     height: 100%;
+    font-weight: 400;
 }
 
-.main__title {
-    font-size: 100px;
+.main__header {
     flex-grow: 1;
     padding: 40px;
 }
 
+.main__header-title {
+    font-size: 100px;
+}
+
+.main__header-subtitle {
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+.main__header-link {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .main__button-wrapper {
     align-self: flex-end;
+    margin: 40px 0 0 40px;
     width: 45%;
     padding: 40px;
-    margin: 40px 0 0 40px;
-}   
+}
 
 @media only screen and (max-width: 600px) {
-    .main__title {
-        font-size: 60px;
+    .main__header-title {
+        font-size: 80px;
+    }
+
+    .main__header-subtitle {
+        font-size: 25px;
     }
 }
