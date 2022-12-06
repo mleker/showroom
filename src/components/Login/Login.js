@@ -16,10 +16,10 @@ export const Login = () => {
     return (
         <div className='login__wrapper'>
             <div className='login__header'>
-                <div className='login__header-title'>
+                <div className='login__header_title'>
                     <b>{'Hey, come on in'}</b>
                 </div>
-                <div className='login__header-subtitle'>
+                <div className='login__header_subtitle'>
                     {'just type in '}
                     <b>{'random'}</b>
                     {' credentials'}
@@ -29,9 +29,9 @@ export const Login = () => {
                 className='login__form'
                 onSubmit={handleSubmit}
             >
-                <label className='login__form-label'>
+                <label className='login__form_label'>
                     <input
-                        className={classNames(errors.mail && 'login__form-errored-input', 'login__form-input')}
+                        className={classNames(errors.mail && 'login__form_errored-input', 'login__form_input')}
                         placeholder='user@mail.com'
                         name='mail'
                         type='text'
@@ -41,9 +41,9 @@ export const Login = () => {
                         onChange={handleChange}
                     />
                 </label>
-                <label className='login__form-label'>
+                <label className='login__form_label'>
                     <input
-                        className={classNames(errors.password && 'login__form-errored-input', 'login__form-input')}
+                        className={classNames(errors.password && 'login__form_errored-input', 'login__form_input')}
                         placeholder='password'
                         name='password'
                         type='password'
@@ -53,9 +53,9 @@ export const Login = () => {
                         onChange={handleChange}
                     />
                 </label>
-                <div className='login-form__submit-button-wrapper'>
+                <div className='login__form_submit-button-wrapper'>
                     {!!Object.keys(errors).length &&
-                        <div className='login__form-error'>
+                        <div className='login__form_error'>
                             {Object.values(errors).map((msg) => <p key={msg}>{msg}</p>)}
                         </div>
                     }

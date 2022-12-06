@@ -27,15 +27,15 @@ export const Main = () => {
     return (
         <div className='main__wrapper'>
             <div className='main__header'>
-                <div className='main__header-title'>
+                <div className='main__header_title'>
                     <b>{'I am Nastya Mleko '}</b>
                 </div>
-                <div className='main__header-subtitle'>
+                <div className='main__header_subtitle'>
                     {'and I\'m doing '}
                     <b>{'frontend'}</b>
                     {', checkout my '}
                     <a
-                        className='main__header-link'
+                        className='main__header_link'
                         href={'/nastya-mleko-frontend-cv.pdf'}
                         download
                     >

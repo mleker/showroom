@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 export const Button = ({ onClick, isLoading, children, type }) => (
     <button
-        className={classNames(isLoading ? 'button-glowing' : 'button')}
+        className={classNames(isLoading ? 'button_glowing' : 'button')}
         onClick={onClick}
         type={type}
     >

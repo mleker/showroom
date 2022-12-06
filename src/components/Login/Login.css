@@ -11,11 +11,11 @@
     padding: 40px;
 }
 
-.login__header-title {
+.login__header_title {
     font-size: 100px;
 }
 
-.login__header-subtitle {
+.login__header_subtitle {
     padding-top: 20px;
     font-size: 30px;
 }
@@ -28,11 +28,11 @@
     padding: 40px;
 }
 
-.login__form-label {
+.login__form_label {
     flex-grow: 1;
 }
 
-.login__form-input {
+.login__form_input {
     width: 100%;
     box-shadow: 0 6px 0 -1px #000;
     outline: 0;
@@ -46,7 +46,7 @@
     appearance: none;
 }
 
-.login__form-errored-input {
+.login__form_errored-input {
     box-shadow: 0 6px 0 -1px red;
     color: red;
 }
@@ -64,14 +64,14 @@
     color: black;
 }
 
-.login__form-submit-button-wrapper {
+.login__form_submit-button-wrapper {
     display: flex;
     align-self: flex-end;
     margin: 40px 0 0 40px;
     width: 45%;
 }
 
-.login__form-error {
+.login__form_error {
     position: absolute;
     left: 40px;
     bottom: 40px;
@@ -93,15 +93,15 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .login__header-title {
+    .login__header_title {
         font-size: 80px;
     }
 
-    .login__header-subtitle {
+    .login__header_subtitle {
         font-size: 25px;
     }
 
-    .login__form-input {
+    .login__form_input {
         font-size: 25px;
     }
 }

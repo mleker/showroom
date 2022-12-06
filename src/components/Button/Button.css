@@ -15,7 +15,7 @@
     appearance: none;
 }
 
-.button-glowing {
+.button_glowing {
     outline: none;
     border: none;
     width: 100%;
@@ -27,7 +27,7 @@
     appearance: none;
 }
 
-.button-glowing:before {
+.button_glowing:before {
     content: '';
     position: absolute;
     z-index: -1;
