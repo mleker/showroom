@@ -18,7 +18,7 @@ export const Main = () => {
         }
 
         return () => controller.abort();
-    }, [])
+    }, [isLoggingOut])
 
     const handleClick = async () => {
         setIsLoggingOut(true);
